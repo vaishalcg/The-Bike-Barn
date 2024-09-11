@@ -13,7 +13,9 @@ namespace WebMVC.Controllers
     public class StoreMVCController : Controller
     {
         string baseURL = "https://localhost:44352/api/";
+
         // GET: StoreMVC
+        [Authorize(Roles = "Admin")]
         public ActionResult Index(string searchTerm, string city,int? filterOption)
         {
             IEnumerable<Store> StoreList = null;
@@ -150,6 +152,7 @@ namespace WebMVC.Controllers
         }
 
         // GET: StoreMVC/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
             // variable to hold the person details retrieved from WebApi
@@ -179,12 +182,14 @@ namespace WebMVC.Controllers
         }
 
         // GET: StoreMVC/Create
+        [Authorize(Roles = "Store")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: StoreMVC/Create
+        [Authorize(Roles = "Store")]
         [HttpPost]
         public ActionResult Create(Store storeObj)
         {
@@ -211,6 +216,7 @@ namespace WebMVC.Controllers
         }
 
         // GET: StoreMVC/Edit/5
+        [Authorize(Roles ="Store")]
         public ActionResult Edit(int id)
         {
             // variable to hold the person details retrieved from WebApi
@@ -240,6 +246,7 @@ namespace WebMVC.Controllers
         }
 
         // POST: StoreMVC/Edit/5
+        [Authorize(Roles = "Store")]
         [HttpPost]
         public ActionResult Edit(int id, Store obj)
         {

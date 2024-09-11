@@ -8,6 +8,7 @@ using WebMVC.Models;
 
 namespace WebMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryMVCController : Controller
     {
         string baseURL = "https://localhost:44352/api/";

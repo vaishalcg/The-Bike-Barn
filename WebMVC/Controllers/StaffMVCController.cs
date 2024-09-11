@@ -19,6 +19,7 @@ namespace WebMVC.Controllers
         string baseURL = "https://localhost:44352/api/";
 
         #region GET Staff Details
+        [Authorize(Roles = "Store,Staff")]
         public ActionResult Index(string searchTerm, int? id, string storeName, int? filterOption)
         {
             IEnumerable<Staff> staffList = Enumerable.Empty<Staff>();
@@ -161,6 +162,7 @@ namespace WebMVC.Controllers
 
         // GET: StaffMVC/Details/5
         #region GET Staff/Details/5
+        [Authorize(Roles = "Store")]
         public ActionResult Details(int id)
         {
             // variable to hold the staff details retrieved from WebApi
@@ -192,6 +194,7 @@ namespace WebMVC.Controllers
 
         // GET: StaffMVC/Create
         #region GET staff/create
+        [Authorize(Roles = "Store")]
         public ActionResult Create()
         {
             return View();
@@ -200,6 +203,7 @@ namespace WebMVC.Controllers
 
         // POST: StaffMVC/Create
         #region POST Staff/Create
+        [Authorize(Roles = "Store")]
         [HttpPost]
         public ActionResult Create(Staff staffObj)
         {
@@ -228,6 +232,7 @@ namespace WebMVC.Controllers
 
         // GET: StaffMVC/Edit/5
         #region Staff/edit/5
+        [Authorize(Roles = "Store")]
         public ActionResult Edit(int id)
         {
             // variable to hold the staff details retrieved from WebApi
@@ -259,6 +264,7 @@ namespace WebMVC.Controllers
 
         // POST: StaffMVC/Edit/5
         #region POST staff/edit/5
+        [Authorize(Roles = "Store")]
         [HttpPost]
         public ActionResult Edit(int id, Staff obj)
         {

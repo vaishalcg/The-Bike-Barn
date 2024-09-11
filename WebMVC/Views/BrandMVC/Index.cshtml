@@ -57,6 +57,20 @@
         }
 </style>
 
+@*@{ 
+    var imagelist = new List<string>() {
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+    ,
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+    "https://img.freepik.com/premium-photo/large-motor-cycle_812426-131912.jpg?w=2000",
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+    "https://img.freepik.com/premium-photo/large-motor-cycle_812426-131912.jpg?w=2000",
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+    "https://img.freepik.com/premium-photo/large-motor-cycle_812426-131912.jpg?w=2000",
+    "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg"
+    };
+}*@
+    
 <div class="container mt-4">
     <h2 class="mb-4">Brands</h2>
 
@@ -67,26 +81,43 @@
     </p>
 
     <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-img-container">
-                        <img src="https://via.placeholder.com/150" class="card-img" alt="Brand Image">
-                    </div>
-                    <div class="card-header">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Brand_Name)</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">Brand ID: @Html.DisplayFor(modelItem => item.Brand_Id)</p>
-                        <div class="d-flex justify-content-between">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Brand_Id }, new { @class = "btn btn-warning btn-sm" })
-                            @Html.ActionLink("Details", "Details", new { id = item.Brand_Id }, new { @class = "btn btn-info btn-sm" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Brand_Id }, new { @class = "btn btn-danger btn-sm" })
+        @{
+            var imagelist = new List<string>() {
+                "https://img.freepik.com/premium-photo/large-motor-cycle_812426-131912.jpg?w=2000",
+                "https://img.freepik.com/premium-photo/white-powerful-sports-bike-racing-high-speeds-white-background-3d-rendering_1162225-14568.jpg",
+                "https://img.freepik.com/premium-photo/motorcycle-with-word-honda-front_862994-424908.jpg",
+                "https://img.freepik.com/premium-photo/way-summer-vacation-riding-motorcycle-down-empty-road-tour-route-explore-natural-wonders-world_28914-2904.jpg",
+                "https://img.freepik.com/premium-photo/three-wheeled-scooter-with-red-black-trim_979014-14764.jpg",
+                "https://img.freepik.com/premium-photo/motorcycle-parked-street-city-night_796580-2726.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid",
+                "https://img.freepik.com/free-photo/high-angle-old-motorcycle-outdoors_23-2148703221.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid",
+                "https://img.freepik.com/premium-photo/sportster-iron-883-genarated-by-ai_1011848-22663.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid",
+                "https://img.freepik.com/premium-photo/sportster-iron-883-genarated-by-ai_1011848-22655.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid",
+                "https://img.freepik.com/premium-photo/yellow-lightweight-touristic-enduro-motorcycle-3d-illustration_101266-18137.jpg?ga=GA1.1.1622076038.1726051147&semt=ais_hybrid"
+            };
+           int i = 0;
+           foreach (var item in Model)
+           {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-img-container">
+                            <img src="@imagelist[i]" class="card-img" alt="Brand Image">
+                        </div>
+                        <div class="card-header">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Brand_Name)</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Brand ID: @Html.DisplayFor(modelItem => item.Brand_Id)</p>
+                            <div class="d-flex justify-content-between">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Brand_Id }, new { @class = "btn btn-warning btn-sm" })
+                                @Html.ActionLink("Details", "Details", new { id = item.Brand_Id }, new { @class = "btn btn-info btn-sm" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Brand_Id }, new { @class = "btn btn-danger btn-sm" })
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+                i++;
+            }
+
+            }
     </div>
 </div>
