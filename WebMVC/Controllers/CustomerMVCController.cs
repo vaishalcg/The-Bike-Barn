@@ -16,6 +16,7 @@ namespace WebMVC.Controllers
         #region INDEX
 
         // GET: CustomerMVC
+        [Authorize(Roles = "Store")]
         public ActionResult Index(string searchTerm, string city, string zipcode, DateTime? orderdate, int? filterOption)
         {
             IEnumerable<Customer> custList = null;
@@ -92,6 +93,7 @@ namespace WebMVC.Controllers
         #endregion
 
         // GET: CustomerMVC/Details/5
+        [Authorize(Roles = "Store")]
         public ActionResult Details(int id)
         {
             // variable to hold the person details retrieved from WebApi
@@ -122,12 +124,14 @@ namespace WebMVC.Controllers
         }
 
         // GET: CustomerMVC/Create
+        [Authorize(Roles = "Staff")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: CustomerMVC/Create
+        [Authorize(Roles = "Staff")]
         [HttpPost]
         public ActionResult Create(Customer customObj)
         {
@@ -154,6 +158,7 @@ namespace WebMVC.Controllers
         }
 
         // GET: CustomerMVC/Edit/5
+        [Authorize(Roles ="Staff")]
         public ActionResult Edit(int id)
         {
             // variable to hold the person details retrieved from WebApi
@@ -183,6 +188,7 @@ namespace WebMVC.Controllers
         }
 
         // POST: CustomerMVC/Edit/5
+        [Authorize(Roles = "Staff")]
         [HttpPost]
         public ActionResult Edit(int id, Customer customObj)
         {

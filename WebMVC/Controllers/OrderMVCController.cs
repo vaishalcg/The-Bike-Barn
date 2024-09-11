@@ -15,6 +15,7 @@ namespace WebMVC.Controllers
         string baseURL = "https://localhost:44352/api/";
         #region Index
         // GET: OrderMVC
+        [Authorize(Roles = "Admin,Store")]
         public ActionResult Index(string searchTerm, int? customerid, string customername, int? status, DateTime? orderdate, int? filterOption)
         
         {
@@ -141,6 +142,7 @@ namespace WebMVC.Controllers
 
         #region Details
         // GET: OrderMVC/Details/5
+        [Authorize(Roles = "Admin,Store")]
         public ActionResult Details(int id)
         {
             // variable to hold the person details retrieved from WebApi
@@ -173,6 +175,7 @@ namespace WebMVC.Controllers
 
         #region Create GET
         // GET: OrderMVC/Create
+        [Authorize(Roles ="Store")]
         public ActionResult Create()
         {
             return View();
@@ -181,6 +184,7 @@ namespace WebMVC.Controllers
 
         #region Create POST
         // POST: OrderMVC/Create
+        [Authorize(Roles = "Store")]
         [HttpPost]
         public ActionResult Create(Order orderObj)
         {
