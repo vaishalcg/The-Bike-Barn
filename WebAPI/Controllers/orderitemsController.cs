@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
    // [RoutePrefix("api/orderitems")]
     public class orderitemsController : ApiController
     {
-        private BikeStores_Team3Entities db = new BikeStores_Team3Entities();
+        public BikeStores_Team3Entities db = new BikeStores_Team3Entities();
 
 
         #region GET: api/orderitems
@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
         // GET: api/category/5
         [ResponseType(typeof(decimal))]
         [Route("api/orderitems/{orderId}")]
-        public IHttpActionResult Getcategory(int orderId)
+        public IHttpActionResult Getorderitem(int orderId)
         {
             List<order_items> orderItem = db.order_items.Where(x => x.order_id == orderId).ToList();
             if (orderItem == null)
