@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -52,12 +53,29 @@ namespace WebMVC.Controllers
             }
         }
 
+        private readonly List<string> _unauthorizedControllers = new List<string>
+        {
+                "CategoryMVC",
+                "StoreMVC",
+                "ProductMVC",
+                "BrandMVC",
+                "CustomerMVC",
+                "Order_ItemsMVC",
+                "OrderMVC",
+                "StaffMVC",
+                "StockMVC"
+        };
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            if (!string.IsNullOrEmpty(returnUrl) && _unauthorizedControllers.Any(controller => returnUrl.Contains(controller)))
+            {
+                ModelState.AddModelError(string.Empty, "You are not authorized to access this page.");
+            }
+            //ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
