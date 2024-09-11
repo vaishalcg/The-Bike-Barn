@@ -1,9 +1,65 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "About Us";
+    ViewBag.Message = "Empowering Communities through Sustainable Transportation";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-    <p>Use this area to provide additional information.</p>
-</main>
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        .font-weight-bold {
+            font-weight: 700;
+        }
+
+        .section {
+            padding: 2rem 0;
+        }
+
+            .section p {
+                margin-bottom: 1rem;
+            }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <header>
+            <h2 class="display-4" id="title">@ViewBag.Title</h2>
+            <p class="lead">@ViewBag.Message</p>
+        </header>
+
+        <main>
+            <div class="row section">
+                <div class="col-md-8 offset-md-2">
+                    <p class="lead">Welcome to the Bike Barn, where we are committed to promoting sustainable transportation and making cycling accessible to everyone. Our mission is to provide bicycles and repair services to individuals in need, especially in underserved communities.</p>
+
+                    <p>At the Bike Barn, we believe in the transformative power of cycling. We work diligently to collect, refurbish, and distribute bicycles, ensuring that those who lack access to reliable transportation can enjoy the benefits of cycling. Our efforts go beyond simply providing bikes; we aim to support a healthier and more eco-friendly lifestyle within our communities.</p>
+
+                    <p>Our dedicated team of volunteers and staff partners with local organizations, schools, and businesses to maximize our impact. Through various programs and initiatives, we strive to make a positive difference in the lives of those we serve, fostering a culture of sustainability and well-being.</p>
+
+                    <p>We invite you to join us in our mission to promote cycling and support our community. Whether you wish to donate a bike, volunteer, or learn more about our programs, we welcome your involvement and support.</p>
+
+                    <p class="font-weight-bold">Thank you for your support!</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

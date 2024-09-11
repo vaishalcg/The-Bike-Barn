@@ -49,6 +49,7 @@ namespace WebMVC.Controllers
         #region INDEX
 
         // GET: CustomerMVC
+        [Authorize(Roles = "Admin,Store,Staff")]
         public ActionResult Index(string searchTerm, string catName, string modelYear, int? custId, string brandName, string storeId, int? filterOption)
         {
             IEnumerable<Product> prodList = Enumerable.Empty<Product>();
@@ -284,6 +285,7 @@ namespace WebMVC.Controllers
 
 
         // GET: ProductMVC/Details/5
+        [Authorize(Roles = "Admin,Store,Staff")]
         public ActionResult Details(int id)
         {
             // variable to hold the person details retrieved from WebApi

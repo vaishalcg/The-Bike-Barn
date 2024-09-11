@@ -78,12 +78,14 @@ namespace WebMVC.Controllers
         }
 
         // GET: BrandMVC/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: BrandyMVC/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Brand bObj)
         {
@@ -110,6 +112,7 @@ namespace WebMVC.Controllers
         }
 
         // GET: BrandMVC/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             // variable to hold the brand details retrieved from WebApi
@@ -139,6 +142,7 @@ namespace WebMVC.Controllers
         }
 
         // POST: CategoryMVC/Edit/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(int id, Brand bObj)
         {
