@@ -231,7 +231,7 @@ namespace WebMVC.Controllers
                                 break;
 
                             default:
-                                response = client.GetAsync("product").Result;
+                                response = client.GetAsync("products").Result;
                                 if (response.IsSuccessStatusCode)
                                 {
                                     prodList = response.Content.ReadAsAsync<IList<Product>>().Result;
@@ -252,7 +252,7 @@ namespace WebMVC.Controllers
                     }
                     else
                     {
-                        response = client.GetAsync("product").Result;
+                        response = client.GetAsync("products").Result;
                         //if (response.IsSuccessStatusCode)
                         //{
                         prodList = response.Content.ReadAsAsync<IList<Product>>().Result;
