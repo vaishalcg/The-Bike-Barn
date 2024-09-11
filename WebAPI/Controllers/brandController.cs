@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
 {
     public class brandController : ApiController
     {
-        private BikeStores_Team3Entities db = new BikeStores_Team3Entities();
+        public BikeStores_Team3Entities db = new BikeStores_Team3Entities();
 
         // GET: api/brand
         #region GET /api/brand
