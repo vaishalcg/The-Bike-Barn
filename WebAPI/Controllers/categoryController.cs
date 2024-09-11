@@ -14,7 +14,7 @@ namespace WebAPI.Controllers
 {
     public class categoryController : ApiController
     {         
-        private BikeStores_Team3Entities db = new BikeStores_Team3Entities();
+        public BikeStores_Team3Entities db = new BikeStores_Team3Entities();
 
         #region GET: api/category
 

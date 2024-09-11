@@ -10,44 +10,43 @@ using WebAPI.Models;
 namespace WebUnitTest
 {
     [TestClass]
-    public class BrandTest
+    public class CategoryTest
     {
-
         private Mock<BikeStores_Team3Entities> _mockDbContext;
-        private Mock<DbSet<brand>> _mockBrandSet;
-        private brandController _controller;
+        private Mock<DbSet<category>> _mockCategorySet;
+        private categoryController _controller;
 
         [TestInitialize]
         public void Setup()
         {
             // Initialize the mock context and controller
             _mockDbContext = new Mock<BikeStores_Team3Entities>();
-            _mockBrandSet = new Mock<DbSet<brand>>();
+            _mockCategorySet = new Mock<DbSet<category>>();
 
-            _controller = new brandController
+            _controller = new categoryController
             {
                 db = _mockDbContext.Object
             };
         }
         [TestMethod]
-        public void Getorder_items_ReturnsAllOrderItems()
+        public void GetCategory_ReturnsCategoryById()
         {
             // Arrange
-            var mockBrand = new List<brand>
+            var mockCategory = new List<category>
             {
-                new brand { order_id = 1, item_id = 1, product_id = 20, quantity = 5, list_price = 500, discount = 0.5m },
-                new brand { order_id = 1, item_id = 2, product_id = 8, quantity = 2, list_price = 1799, discount = 0.07m }
+                new category { category_id = 1, category_name = "Children Bicycles" },
+                new category { }
             }.AsQueryable();
 
-            _mockBrandSet.As<IQueryable<order_items>>().Setup(m => m.Provider).Returns(mockBrand.Provider);
-            _mockBrandSet.As<IQueryable<order_items>>().Setup(m => m.Expression).Returns(mockBrand.Expression);
-            _mockBrandSet.As<IQueryable<order_items>>().Setup(m => m.ElementType).Returns(mockBrand.ElementType);
-            _mockBrandSet.As<IQueryable<order_items>>().Setup(m => m.GetEnumerator()).Returns(brand.GetEnumerator());
+            _mockCategorySet.As<IQueryable<category>>().Setup(m => m.Provider).Returns(mockCategory.Provider);
+            _mockCategorySet.As<IQueryable<category>>().Setup(m => m.Expression).Returns(mockCategory.Expression);
+            _mockCategorySet.As<IQueryable<category>>().Setup(m => m.ElementType).Returns(mockCategory.ElementType);
+            _mockCategorySet.As<IQueryable<category>>().Setup(m => m.GetEnumerator()).Returns(mockCategory.GetEnumerator());
 
-            _mockDbContext.Setup(db => db.order_items).Returns(_mockBrandSet.Object);
+            _mockDbContext.Setup(db => db.categories).Returns(_mockCategorySet.Object);
 
             // Act
-            var result = _controller.Getorder_items() as IEnumerable<order_items>;
+            var result = _controller.Getcategories() as IEnumerable<category>;
 
             // Assert
             Assert.IsNotNull(result);
