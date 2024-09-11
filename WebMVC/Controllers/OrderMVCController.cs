@@ -175,7 +175,7 @@ namespace WebMVC.Controllers
 
         #region Create GET
         // GET: OrderMVC/Create
-        [Authorize(Roles ="Store")]
+        [Authorize(Roles ="Staff")]
         public ActionResult Create()
         {
             return View();
@@ -184,7 +184,7 @@ namespace WebMVC.Controllers
 
         #region Create POST
         // POST: OrderMVC/Create
-        [Authorize(Roles = "Store")]
+        [Authorize(Roles = "Staff")]
         [HttpPost]
         public ActionResult Create(Order orderObj)
         {

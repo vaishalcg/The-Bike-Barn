@@ -8,6 +8,7 @@ using WebMVC.Models;
 
 namespace WebMVC.Controllers
 {
+    [Authorize(Roles ="Staff,Store")]
     public class StockMVCController : Controller
     {
         string baseURL = "https://localhost:44352/api/";

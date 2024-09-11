@@ -8,6 +8,7 @@ using WebMVC.Models;
 
 namespace WebMVC.Controllers
 {
+    [Authorize(Roles ="Store")]
     public class Order_ItemsMVCController : Controller
     {
         // GET: Order_ItemsMVC
