@@ -1,43 +1,52 @@
 ﻿@model WebMVC.Models.Stock
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Stock Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="container mt-4">
+    
 
-<div>
-    <h4>Stock</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Store_Id)
-        </dt>
+    <div class="alert alert-info" role="alert">
+        <strong>Details</strong>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Store_Id)
-        </dd>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Stock Information</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Store_Id)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Store_Id)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Product_Id)
-        </dt>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Product_Id)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Product_Id)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Product_Id)
-        </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Quantity)
+                </dd>
+            </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-    </dl>
+            <div class="form-group">
+                <a class="btn btn-primary" href="@Url.Action("EditStoreByStoreId", new { storeId = Model.Store_Id, prodId = Model.Product_Id })">Edit</a>
+                <a class="btn btn-secondary" href="@Url.Action("Index")">Back to List</a>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "EditStoreByStoreId", new { storeId = Model.Store_Id, prodId = Model.Product_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
