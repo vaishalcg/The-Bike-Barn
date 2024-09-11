@@ -11,17 +11,29 @@ namespace WebMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Staff
     {
         public int Staff_Id { get; set; }
+        [Required]
+        [RegularExpression(@"^[a-z A-Z]$", ErrorMessage = "Invalid Name format.")]
         public string First_Name { get; set; }
+        [Required]
+        [RegularExpression(@"^[a-z A-Z]$", ErrorMessage = "Invalid Name format.")]
         public string Last_Name { get; set; }
+        [Required]
+        [RegularExpression(@"^[a-zA-Z]+@[a-zA-Z0-9._F-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Invalid email format.")]
         public string Email { get; set; }
+        [Required]
+        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Invalid phone number format must be 10 digit.")]
+        //[StringLength(10, MinimumLength = 10, ErrorMessage = "Phone number cannot be longer than 10 characters.")]
         public string Phone { get; set; }
         public byte Active { get; set; }
         public int Store_Id { get; set; }
         public Nullable<int> Manager_Id { get; set; }
+        [Required]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Password must be between 6 and 100 characters.")]
         public string Password { get; set; }
     }
 }

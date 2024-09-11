@@ -9,20 +9,23 @@ using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.Results;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
     public class staffController : ApiController
     {
-        private BikeStores_Team3Entities db = new BikeStores_Team3Entities();
+        public BikeStores_Team3Entities db = new BikeStores_Team3Entities();
+
+        //public BikeStores_Team3Entities Db { get; set; }
 
         // GET: api/staff
         #region GET api/staff/
         [HttpGet]
-        public IQueryable<staff> Getstaffs()
+        public IEnumerable<staff> Getstaffs()
         {
-            return db.staffs;
+            return db.staffs.ToList();
         }
         #endregion
 
@@ -77,9 +80,12 @@ namespace WebAPI.Controllers
         public IHttpActionResult GetOrdersByStaffId(int staffId)
         {
             var orders = db.orders
-                           .Where(x => x.staff_id == staffId).Join(db.customers, o => o.customer_id, c => c.customer_id,(o, c) => new 
-                         { OrderId = o.order_id, FirstName = c.first_name, LastName = c.last_name
-                         }).ToList();
+                           .Where(x => x.staff_id == staffId).Join(db.customers, o => o.customer_id, c => c.customer_id, (o, c) => new
+                           {
+                               OrderId = o.order_id,
+                               FirstName = c.first_name,
+                               LastName = c.last_name
+                           }).ToList();
 
             if (orders == null || !orders.Any())
             {
@@ -97,8 +103,10 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(staff))]
         public IHttpActionResult GetstaffByName(string storeName)
         {
-            var staffList = from s in db.staffs join st in db.stores on s.store_id equals st.store_id where st.store_name.Contains(storeName)
-            select new{s.staff_id, s.first_name, s.last_name, s.email, s.phone, s.active, s.store_id, s.manager_id};
+            var staffList = from s in db.staffs
+                            join st in db.stores on s.store_id equals st.store_id
+                            where st.store_name.Contains(storeName)
+                            select new { s.staff_id, s.first_name, s.last_name, s.email, s.phone, s.active, s.store_id, s.manager_id };
 
             if (staffList == null || !staffList.Any())
             {
@@ -106,12 +114,10 @@ namespace WebAPI.Controllers
             }
 
             return Ok(staffList);
-
-
         }
         #endregion
 
-        
+
         // PUT: api/staff/5
         #region PUT api/staff/edit/{staffid}/
         [HttpPut]
@@ -244,17 +250,17 @@ namespace WebAPI.Controllers
                 else
                 {
                     // Rethrow the exception if it's not a known conflict
-                 var detailedErrorResponse = new
+                    var detailedErrorResponse = new
                     {
                         TimeStamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"),
                         Message = "Validation Failed",
                     };
-                   return Content(HttpStatusCode.InternalServerError, detailedErrorResponse); // HTTP 500 Internal Server Error
-}
-}
+                    return Content(HttpStatusCode.InternalServerError, detailedErrorResponse); // HTTP 500 Internal Server Error
+                }
+            }
             // return CreatedAtRoute("DefaultApi", new { id = staff.staff_id }, staff);
             return Ok("Record Created Successfully");
-}
+        }
         #endregion
 
         // DELETE: api/staff/5
