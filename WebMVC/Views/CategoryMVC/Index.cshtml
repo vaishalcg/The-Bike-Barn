@@ -49,38 +49,6 @@
             </table>
         </div>
 
-        @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary" })
     </div>
 
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.First().Category_Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.First().Category_Name)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category_Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category_Name)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Category_Id }, new { @class = "btn btn-warning btn-sm" }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Category_Id }, new { @class = "btn btn-info btn-sm" }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Category_Id }, new { @class = "btn btn-danger btn-sm" })
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
 </div>
