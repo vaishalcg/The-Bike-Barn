@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
 {
     public class ordersController : ApiController
     {
-        private BikeStores_Team3Entities db = new BikeStores_Team3Entities();
+        public BikeStores_Team3Entities db = new BikeStores_Team3Entities();
         #region  GET: api/orders
         // GET: api/orders
         [Route("api/orders")]
@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
         // GET: api/orders/5
         [Route("api/orders/{orderId}")]
         [ResponseType(typeof(order))]
-        public IHttpActionResult Getcustomer(int orderID)
+        public IHttpActionResult Getorder(int orderID)
         {
             order orderObj = db.orders.Find(orderID);
             if (orderObj == null)
