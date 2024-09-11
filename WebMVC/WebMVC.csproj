@@ -200,6 +200,7 @@
     <Compile Include="Controllers\OrderMVCController.cs" />
     <Compile Include="Controllers\Order_ItemsMVCController.cs" />
     <Compile Include="Controllers\ProductMVCController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\StaffMVCController.cs" />
     <Compile Include="Controllers\StockMVCController.cs" />
     <Compile Include="Controllers\StoreMVCController.cs" />
@@ -350,6 +351,8 @@
     <Content Include="Views\StockMVC\Edit.cshtml" />
     <Content Include="Views\StockMVC\EditStoreByStoreId.cshtml" />
     <Content Include="Views\ErrorMVC\PageNotFound.cshtml" />
+    <Content Include="Views\Role\RoleList.cshtml" />
+    <Content Include="Views\Role\CreateRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
