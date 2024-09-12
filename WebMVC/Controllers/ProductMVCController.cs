@@ -326,6 +326,7 @@ namespace WebMVC.Controllers
 
         // POST: ProductMVC/Create
         [HttpPost]
+        [Authorize(Roles ="Admin")]
         public ActionResult Create(Product prodObj)
         {
             using (var client = new HttpClient())
