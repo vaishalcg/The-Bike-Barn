@@ -30,6 +30,8 @@ namespace WebMVC.Models
         [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Invalid phone number format must be 10 digit.")]
         //[StringLength(10, MinimumLength = 10, ErrorMessage = "Phone number cannot be longer than 10 characters.")]
         public string Phone { get; set; }
+        [Required]
+        [RegularExpression(@"^[0-1]{1}$", ErrorMessage = "Invalid Activity status use 0 or 1.")]
         public byte Active { get; set; }
         public int Store_Id { get; set; }
         public Nullable<int> Manager_Id { get; set; }
