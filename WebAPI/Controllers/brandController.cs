@@ -64,7 +64,7 @@ namespace WebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
                 if (!brandExists(brandId))
                 {
@@ -82,8 +82,13 @@ namespace WebAPI.Controllers
 
         // POST: api/brand
         #region POST api/brand
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
         [ResponseType(typeof(brand))]
-        public IHttpActionResult Postbrand(brand brand)
+        public IHttpActionResult Postbrand(brand brand) 
         {
             if (!ModelState.IsValid)
             {
