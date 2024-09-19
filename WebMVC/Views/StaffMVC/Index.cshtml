@@ -140,7 +140,7 @@
                         <th>@Html.DisplayNameFor(model => model.Active)</th>
                         <th>@Html.DisplayNameFor(model => model.Store_Id)</th>
                         <th>@Html.DisplayNameFor(model => model.Manager_Id)</th>
-                        <th>@Html.DisplayNameFor(model => model.Password)</th>
+                        
                         <th></th>
                     </tr>
                 </thead>
@@ -158,7 +158,7 @@
                             <td>@Html.DisplayFor(modelItem => item.Active)</td>
                             <td>@Html.DisplayFor(modelItem => item.Store_Id)</td>
                             <td>@Html.DisplayFor(modelItem => item.Manager_Id)</td>
-                            <td>@Html.DisplayFor(modelItem => model.Password)</td>
+                            
 
                             <td class="action-links">
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Staff_Id }, new { @class = "btn btn-warning btn-sm" }) |
@@ -174,22 +174,25 @@
 
         @if (ViewBag.SalesByStaff != null)
         {
-            <table width="200">
-                <tr>
-                    <th>Order Id</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                </tr>
-                @foreach (var item in ViewBag.SalesByStaff)
-                {
+            <table class="table table-striped table-bordered">
+                <thead>
                     <tr>
-                        <td>@item.OrderId</td>
-                        <td>@item.FirstName</td>
-                        <td>@item.LastName</td>
+                        <th>Order Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                     </tr>
-
-                }
-            </table>
+                </thead>
+                <tbody>
+                    <div class="row">
+                        @foreach (var item in ViewBag.SalesByStaff)
+                        {
+                        <tr>
+                            <td>@item.OrderId</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                        </tr>
+                    }
+                </table>
         }
 
 </body>
